@@ -5,3 +5,27 @@
 </ul>
 <a type="button" [routerLink]="['../poll']">Create</a>
 <a type="button" [routerLink]="['../login']">Login</a>
+
+<mat-card class="a-card" *ngFor="let poll of polls | async; let i = index">
+  <mat-card-header>
+    <div mat-card-avatar class="a-avatar-author"></div>
+    <mat-card-title>{{poll.author}}</mat-card-title>
+    <mat-card-subtitle>{{poll.date | date}}<span *ngIf="poll.polledByUser">, {{poll.votes}} Votes</span></mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <span>{{poll.question}}</span>
+    <!-- <a-poll-question-card *ngIf="!poll.polledByUser && !poll.userSelection?.option && poll.questions.length == 1" [poll]="poll"
+      (selectedOption)="optionSelected($event)"></a-poll-question-card>
+    <div *ngIf="poll.questions.length > 1">
+      <p *ngFor="let q of poll.questions"><span>{{q.question}}</span></p>
+    </div> -->
+    <!-- <a-poll-result-card *ngIf="poll.polledByUser && poll.userSelection?.option && poll.questions.length == 1"></a-poll-result-card> -->
+  </mat-card-content>
+  <!-- <mat-card-actions fxLayout="row">
+    <a-fav [favParam]="{userId:poll.author,id:poll.id}" [favorited]="poll.favourite" [favCount]="poll.favCount" (fav)="favourited($event)"></a-fav>
+    <span fxFlex="auto"></span>
+    <button type="button" mat-button color="primary" (click)="storyOfPoll(poll.id)">Story</button>
+    <a-share></a-share>
+    <a-menu-task  [editParam]="{userId:poll.author,pollId:poll.id}" (edit)="editPoll($event)"></a-menu-task>
+  </mat-card-actions> -->
+</mat-card>

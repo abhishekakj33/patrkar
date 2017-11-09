@@ -9,3 +9,14 @@
   <p>Please login.</p>
   <button (click)="login()">Login with Google</button>
 </ng-template>
+
+<h1 mat-dialog-title>Login</h1>
+<form> 
+<div mat-dialog-content>
+  <ul class="a-social-icons">
+    <li class="a-google" (click)="googleLogin()"></li>
+    <!-- <li class="a-fb" (click)="fbLogin()"></li>
+    <li class="a-twitter" (click)="twitterLogin()"></li> -->
+  </ul>
+</div>
+</form>

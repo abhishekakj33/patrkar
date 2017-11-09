@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class PollListComponent implements OnInit {
   polls: Observable<any[]>;
+  
   constructor(db: AngularFirestore) {
     this.polls = db.collection('polls').valueChanges();
   }

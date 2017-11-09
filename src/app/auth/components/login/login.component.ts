@@ -17,9 +17,18 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   
-  login() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  googleLogin() {
+   // this.store.dispatch(new AuthActions.LoginViaGoogle());
+   this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
+  fbLogin() {
+   // this.store.dispatch(new AuthActions.LoginViaFb());
+  }
+  twitterLogin() {
+  //  this.store.dispatch(new AuthActions.LoginViaTwitter());
+  }
+
+  
   logout() {
     this.afAuth.auth.signOut();
   }
