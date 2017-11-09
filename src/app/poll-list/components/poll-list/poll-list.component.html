@@ -1,9 +1,7 @@
-<p>
-  poll-list works!
-</p>
 <ul>
   <li class="text" *ngFor="let poll of polls | async">
     {{poll.question}}
   </li>
 </ul>
 <a type="button" [routerLink]="['../poll']">Create</a>
+<a type="button" [routerLink]="['../login']">Login</a>

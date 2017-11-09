@@ -11,6 +11,10 @@ const appRoutes: Routes = [
     path: 'poll',
     loadChildren: 'app/poll/poll.module#PollModule',
   },
+  {
+    path: 'login',
+    loadChildren: 'app/auth/auth.module#AuthModule',
+  },
 //   { path: '**', component: PageNotFoundComponent }
 ];
 
