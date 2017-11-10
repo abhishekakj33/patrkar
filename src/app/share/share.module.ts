@@ -16,6 +16,9 @@ import {
   MatDialogModule
 } from '@angular/material';
 
+import { FilterComponent } from './components/filter/filter.component';
+import { FilterContentsComponent } from './components/filter-contents/filter-contents.component';
+
 @NgModule({
   imports: [
       CommonModule,
@@ -32,7 +35,7 @@ import {
       MatMenuModule,
       MatDialogModule
   ],
-  declarations: [],
+  declarations: [FilterComponent,FilterContentsComponent],
   exports: [MatInputModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -44,6 +47,9 @@ import {
     MatIconModule,
     MatAutocompleteModule,
     MatMenuModule,
-    MatDialogModule]
+    MatDialogModule,
+    FilterComponent,
+    FilterContentsComponent],
+  
 })
 export class ShareModule { }

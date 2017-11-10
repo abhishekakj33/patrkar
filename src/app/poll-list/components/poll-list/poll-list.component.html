@@ -1,25 +1,23 @@
-<ul>
-  <li class="text" *ngFor="let poll of polls | async">
-    {{poll.question}}
-  </li>
-</ul>
-<a type="button" [routerLink]="['../poll']">Create</a>
-<a type="button" [routerLink]="['../login']">Login</a>
+<button mat-mini-fab [routerLink]="['../poll']" class="a-create-btn">
+  <mat-icon svgIcon="edit"></mat-icon>
+</button>
+
 
 <mat-card class="a-card" *ngFor="let poll of polls | async; let i = index">
   <mat-card-header>
-    <div mat-card-avatar class="a-avatar-author"></div>
-    <mat-card-title>{{poll.author}}</mat-card-title>
-    <mat-card-subtitle>{{poll.date | date}}<span *ngIf="poll.polledByUser">, {{poll.votes}} Votes</span></mat-card-subtitle>
+    <!-- <div  class="a-avatar-author"> -->
+      <!-- <button mat-mini-fab> -->
+        <mat-icon mat-card-avatar svgIcon="account-avatar"></mat-icon>
+      <!-- </button> -->
+    <!-- </div> -->
+    <mat-card-title>{{poll.poll.question}}</mat-card-title>
+    <mat-card-subtitle>{{poll.author}} {{poll.date | date}}<span *ngIf="poll.polledByUser">, {{poll.votes}} Votes</span></mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <span>{{poll.question}}</span>
-    <!-- <a-poll-question-card *ngIf="!poll.polledByUser && !poll.userSelection?.option && poll.questions.length == 1" [poll]="poll"
-      (selectedOption)="optionSelected($event)"></a-poll-question-card>
-    <div *ngIf="poll.questions.length > 1">
-      <p *ngFor="let q of poll.questions"><span>{{q.question}}</span></p>
-    </div> -->
-    <!-- <a-poll-result-card *ngIf="poll.polledByUser && poll.userSelection?.option && poll.questions.length == 1"></a-poll-result-card> -->
+    <a-poll-question [poll]="poll.poll"
+      (selectedOption)="optionSelected($event)"></a-poll-question>
+      <a-poll-result [poll]="poll.poll"
+      (selectedOption)="optionSelected($event)"></a-poll-result>
   </mat-card-content>
   <!-- <mat-card-actions fxLayout="row">
     <a-fav [favParam]="{userId:poll.author,id:poll.id}" [favorited]="poll.favourite" [favCount]="poll.favCount" (fav)="favourited($event)"></a-fav>

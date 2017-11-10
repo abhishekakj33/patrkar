@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   
   googleLogin() {
    // this.store.dispatch(new AuthActions.LoginViaGoogle());
-   this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+   this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
   }
   fbLogin() {
    // this.store.dispatch(new AuthActions.LoginViaFb());

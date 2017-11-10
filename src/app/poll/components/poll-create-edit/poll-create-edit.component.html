@@ -26,7 +26,6 @@
               <div class="a-input" fxLayout="row" style="margin: 25px 0 0 0;">
                 <div fxFlex="auto"></div>
               </div>
-                
             </mat-card-content>
           </mat-card>
         </div>
@@ -39,8 +38,6 @@
           </mat-option>
         </mat-select>
         </div>
-        
-     
     </mat-card-content>
       <mat-toolbar color="">
         <button type="button" (click)="deletePoll(pollForm.value, pollForm.valid)" *ngIf="pollForm.state == 'draft' || 'publish'" mat-raised-button mat-mini-fab><mat-icon>delete</mat-icon></button>
