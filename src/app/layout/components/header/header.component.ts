@@ -16,8 +16,6 @@ import { FilterComponent } from '../../../share/components/filter/filter.compone
 })
 export class HeaderComponent implements OnInit {
   currentUserImageUrl:any;
-  currentUser:any;
-  
   currentUserObservable:any;
   constructor(public dialog: MatDialog,iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,public authServ:AuthService) {
     iconRegistry.addSvgIcon(
@@ -26,9 +24,7 @@ export class HeaderComponent implements OnInit {
    }
 
   ngOnInit() {
-    //this.currentUserImageUrl = this.authServ.currentUserImageUrl;
     this.currentUserObservable = this.authServ.currentUserObservable;
-    this.currentUser = this.authServ.currentUser
     this.currentUserObservable.subscribe((user) => {
       console.log("userProfile",user);
       this.currentUserImageUrl = user.photoURL;

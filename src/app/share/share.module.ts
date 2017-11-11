@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import {
   MatInputModule,
   MatButtonModule,
@@ -13,7 +12,8 @@ import {
   MatIconModule,
   MatAutocompleteModule,
   MatMenuModule,
-  MatDialogModule
+  MatDialogModule,
+  MatListModule
 } from '@angular/material';
 
 import { FilterComponent } from './components/filter/filter.component';
@@ -33,10 +33,13 @@ import { FilterContentsComponent } from './components/filter-contents/filter-con
       MatIconModule,
       MatAutocompleteModule,
       MatMenuModule,
-      MatDialogModule
+      MatDialogModule,
+      MatListModule
   ],
   declarations: [FilterComponent,FilterContentsComponent],
-  exports: [MatInputModule,
+  exports: [
+    
+    MatInputModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
@@ -48,6 +51,7 @@ import { FilterContentsComponent } from './components/filter-contents/filter-con
     MatAutocompleteModule,
     MatMenuModule,
     MatDialogModule,
+    MatListModule,
     FilterComponent,
     FilterContentsComponent],
   

@@ -21,6 +21,9 @@ header, hgroup, menu, nav, section, summary, time, mark, audio, video
   .a-fill-remaining-space {
     flex: 1 1 auto;
   }
+  .a-full-width{
+    width: 100%
+  }
   /*Common*/
 
   /* Images */

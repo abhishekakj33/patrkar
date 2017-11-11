@@ -4,6 +4,7 @@ export class Poll {
     days?: string
     author: string
     authorUID: any
+    authorImageUrl:any
     city: object
     date: Date
     question: PollQuestion
