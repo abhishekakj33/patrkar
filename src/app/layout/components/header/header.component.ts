@@ -2,6 +2,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatIconRegistry} from '@angular/material';
 import { MatDialog } from '@angular/material';
+
+import { AuthService } from '../../../core/services/auth/auth.service';
+
 import { LoginComponent } from '../../../auth/components/login/login.component';
 import { FilterComponent } from '../../../share/components/filter/filter.component';
 
@@ -12,14 +15,24 @@ import { FilterComponent } from '../../../share/components/filter/filter.compone
   encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(public dialog: MatDialog,iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  currentUserImageUrl:any;
+  currentUser:any;
+  
+  currentUserObservable:any;
+  constructor(public dialog: MatDialog,iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,public authServ:AuthService) {
     iconRegistry.addSvgIcon(
       'more-vert',
       sanitizer.bypassSecurityTrustResourceUrl('../../../../assets/icons/ic_more_vert_white_24px.svg'));
    }
 
   ngOnInit() {
+    //this.currentUserImageUrl = this.authServ.currentUserImageUrl;
+    this.currentUserObservable = this.authServ.currentUserObservable;
+    this.currentUser = this.authServ.currentUser
+    this.currentUserObservable.subscribe((user) => {
+      console.log("userProfile",user);
+      this.currentUserImageUrl = user.photoURL;
+    })
   }
   signIn() {
     let dialogRef = this.dialog.open(LoginComponent);
@@ -32,5 +45,8 @@ export class HeaderComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
     //  console.log("result", result, this.user)
     });
+  }
+  logout() {
+    this.authServ.signOut();
   }
 }

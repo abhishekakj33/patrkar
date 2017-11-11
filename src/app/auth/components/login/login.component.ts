@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
 
-//Pending:Have to remove * and only import neccesary module
-import * as firebase from 'firebase/app';
+import { AuthService } from '../../../core/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,25 +9,28 @@ import * as firebase from 'firebase/app';
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
+  // authenticated:any;
+  // currentUser:any;
+  // currentUserObservable:any
+  // currentUserId:any;
+  // currentUserAnonymous:any;
+  // currentUserDisplayName:any;
 
-  constructor(public afAuth: AngularFireAuth) { }
+  constructor(public authServ:AuthService) { }
 
   ngOnInit() {
+  
   }
   
   googleLogin() {
    // this.store.dispatch(new AuthActions.LoginViaGoogle());
-   this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+   //this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+  this.authServ.googleLogin();
   }
   fbLogin() {
    // this.store.dispatch(new AuthActions.LoginViaFb());
   }
   twitterLogin() {
   //  this.store.dispatch(new AuthActions.LoginViaTwitter());
-  }
-
-  
-  logout() {
-    this.afAuth.auth.signOut();
   }
 }

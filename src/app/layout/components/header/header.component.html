@@ -1,18 +1,19 @@
 <mat-toolbar color="primary">
-    <span>SA</span>
+    <img [src]="currentUserImageUrl" class="a-img-circle" *ngIf="currentUserImageUrl">
+    <mat-icon mat-card-avatar svgIcon="account-avatar" *ngIf="!currentUserImageUrl"></mat-icon>
   <span class="a-fill-remaining-space"></span>
     <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon svgIcon="more-vert"></mat-icon>
       </button>
     <mat-menu #menu="matMenu" [overlapTrigger]="true">
-    <button mat-menu-item (click)="signIn()" *ngIf="!(auth$ | async)">
+    <button mat-menu-item (click)="signIn()" *ngIf="!(currentUserObservable | async)">
       <span>Sign In</span>
     </button>
-    <button mat-menu-item (click)="logout()" *ngIf="(auth$ | async)">
+    <button mat-menu-item (click)="logout()" *ngIf="(currentUserObservable | async)">
       <span >Logout</span>
     </button> 
-    <button mat-menu-item (click)="filter()">
+    <!-- <button mat-menu-item (click)="filter()">
       <span>Filter</span>
-    </button>
+    </button> -->
   </mat-menu>
 </mat-toolbar>

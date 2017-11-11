@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
+import { AuthService } from '../../../core/services/auth/auth.service';
+
 @Component({
   selector: 'app-poll-create-edit',
   templateUrl: './poll-create-edit.component.html',
@@ -7,10 +9,28 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class PollCreateEditComponent implements OnInit {
-  constructor() {
-   
+  authenticated:any;
+  currentUser:any;
+  currentUserObservable:any
+  currentUserId:any;
+  currentUserAnonymous:any;
+  currentUserDisplayName:any;
+
+  constructor(public authServ:AuthService) {
   }
   ngOnInit() {
+    this.authenticated = this.authServ.authenticated;
+    this.currentUser = this.authServ.currentUser
+    this.currentUserObservable = this.authServ.currentUserObservable;
+    this.currentUserId = this.authServ.currentUserId;
+    this.currentUserAnonymous = this.authServ.currentUserAnonymous;
+    this.currentUserDisplayName = this.authServ.currentUserDisplayName;
+    console.log("user",this.authenticated,
+    this.currentUser,
+    this.currentUserObservable,
+    this.currentUserId,
+    this.currentUserAnonymous,
+    this.currentUserDisplayName)
   }
   // redirectToEdit: Subscription;
   // // user: User;
