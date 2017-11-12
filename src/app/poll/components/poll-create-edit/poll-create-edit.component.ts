@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import {MatIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
@@ -22,7 +23,7 @@ export class PollCreateEditComponent implements OnInit {
   currentUserAnonymous:any;
   currentUserDisplayName:any;
 
-  constructor(private fb: FormBuilder,public authServ:AuthService,iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor(private fb: FormBuilder,public authServ:AuthService,public pollServ:PollService,iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private router: Router, private route: ActivatedRoute) {
     iconRegistry.addSvgIcon(
       'remove',
       sanitizer.bypassSecurityTrustResourceUrl('../../../../assets/icons/ic_remove_black_24px.svg'));
@@ -58,6 +59,7 @@ export class PollCreateEditComponent implements OnInit {
     this.currentUserAnonymous,
     this.currentUserDisplayName)
     this.currentUserObservable.subscribe((user) => {
+      this.user = user;
       console.log("userProfile",user);
     })
     // this.redirectToEdit = this.actionsSubject
@@ -159,11 +161,16 @@ export class PollCreateEditComponent implements OnInit {
   // }
 
   savePollEvent(poll: Poll, isValid: boolean, state) {
+    if(!isValid) return;
+    
     this.submitted = true;
     poll.authorUID = this.user.uid;
     poll.author = this.user.displayName;
     poll.authorImageUrl = this.user.photoURL
-    
+
+    this.pollServ.savePoll(poll);
+
+    this.router.navigate(['../polls'])
   }
   deletePoll(poll: Poll) {
    

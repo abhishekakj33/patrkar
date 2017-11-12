@@ -4,3 +4,10 @@
     right: 20px;
     z-index: 99
 }
+.a-avatar-author{
+    margin: 0 8px 0px 0px;
+}
+/* Override material */
+.mat-card-header-text {
+    margin: 0 0px !important;
+}

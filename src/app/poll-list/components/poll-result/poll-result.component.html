@@ -1,11 +1,13 @@
 <div class="a-poll-detail-card">
- Total Votes: {{poll.totalVotesCount}} 
-  <div *ngFor="let opt of poll.options" (change)="optionSelected(poll, q, opt)">
-      {{opt.option}} 
+    <!--  *ngIf="poll.polledByUser" -->
+ <span >Total Votes: {{poll.totalVotesCount}} </span>
+  <div *ngFor="let opt of poll.questions[0]?.options" (change)="optionSelected(poll, q, opt)">
+      <span class="a-poll-option">{{opt.option}} </span>
       <div class="a-progress-chart">
       <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
-      <span>{{opt.voteCount}} votes</span>
+      <!-- <span>{{opt.voteCount}} votes</span> -->
       <span>10%</span>
-      </div>
+    </div>
+      
   </div>
 </div>

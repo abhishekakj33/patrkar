@@ -1,8 +1,8 @@
 <div class="a-poll-detail-card">
-  <!-- {{poll.question}} -->
+  <!-- {{poll | json}} -->
   <div>
   <mat-radio-group>
-    <mat-radio-button *ngFor="let opt of poll.options" [value]="opt" (change)="optionSelected(poll, q, opt)">
+    <mat-radio-button *ngFor="let opt of poll.questions[0]?.options;let i=index" [value]="opt" (change)="optionSelected(poll,i)">
       {{opt.option}}
     </mat-radio-button>
   </mat-radio-group>
