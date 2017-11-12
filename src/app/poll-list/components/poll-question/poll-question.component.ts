@@ -13,8 +13,8 @@ export class PollQuestionComponent implements OnInit {
 
   ngOnInit() {
   }
-  optionSelected(poll,q,opt){
+  optionSelected(poll,i){
     //console.log("opt in card",poll,q,opt);
-     this.selectedOption.emit({poll:poll,question:q,opt:opt})
+     this.selectedOption.emit({poll:poll,optionIndex:i})
    } 
 }

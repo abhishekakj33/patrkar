@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit {
     this.currentUserObservable = this.authServ.currentUserObservable;
     this.currentUserObservable.subscribe((user) => {
       console.log("userProfile",user);
+      if(user)
       this.currentUserImageUrl = user.photoURL;
     })
   }

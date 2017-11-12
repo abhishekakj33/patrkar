@@ -8,6 +8,7 @@ export class Poll {
     city: object
     date: Date
     question: PollQuestion
+    questions: PollQuestion[]
     totalVotesCount?: number = 0;
 }
 

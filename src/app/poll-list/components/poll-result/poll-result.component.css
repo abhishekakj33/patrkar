@@ -1,0 +1,11 @@
+.a-poll-detail-card {
+    display: flex;
+    flex-direction: column;
+}
+.a-progress-chart{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: baseline;
+    align-content: inherit;
+}

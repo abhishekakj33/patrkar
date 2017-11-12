@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore ,AngularFirestoreDocument } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 //Pending:Have to remove * and only import neccesary module
 import * as firebase from 'firebase';
+import { Observable } from 'rxjs/Observable';
 
+import { User, UserProfile } from '../../../core/models/user.model';
 @Injectable()
 export class AuthService {
   authState:any = null;
+  userRef: AngularFirestoreDocument<any>;
+  user:User 
 
   constructor(public afAuth: AngularFireAuth,
     public db: AngularFirestore) {
       this.afAuth.authState.subscribe((auth) => {
         this.authState = auth
       })
-     }
+    
+    }
 
      // Returns true if user is logged in
   get authenticated(): boolean {
@@ -72,8 +77,10 @@ export class AuthService {
   private socialSignIn(provider) {
     return this.afAuth.auth.signInWithRedirect(provider)
       .then((credential) => {
-        this.authState = credential.user
-       // this.updateUserData()
+        this.authState = credential.user;
+        console.log("authState",this.authState);
+        this.user = new User(this.currentUserId,this.currentUserDisplayName,"",this.authState.email,"member","","","",this.authState.photoURL,this.authState.phoneNumber)
+        this.saveUserDetailsData(this.user)
       })
       .catch(error => {//console.log(error)
       });
@@ -117,5 +124,42 @@ private socialSignInRedirectResult(){
     this.afAuth.auth.signOut();
     //this.router.navigate(['/'])
   }
+
+  getUserDetails(user){
+    let path = `users/${user.uid}`;
+    // this.itemDoc = afs.doc<Item>('items/1');
+    // this.item = this.itemDoc.valueChanges();
+    return  this.db.doc(path).valueChanges();
+  }
+
+  //// Helpers ////
+
+  private saveUserDetailsData(userDetails): void {
+    // Writes user name and email to realtime db
+    // useful if your app displays information about users or for admin features
+    console.log("Writes user name and email to realtime db",userDetails)
+    let path = `users/${this.currentUserId}`; // Endpoint on firebase
+    let data = {
+      uid: this.currentUserId,
+      firstName: userDetails.firstName,
+      lastName: userDetails.lastName,
+      email:this.authState.email,
+      role: userDetails.role,
+      state:userDetails.state,
+      city:userDetails.city,
+      urlProfile:'',
+      emailVerified:false,
+      phoneNumber:userDetails.phoneNumber,
+      followerCount:userDetails.followerCount,
+      followingCount:userDetails.followingCount,
+    }
+
+    this.db.doc(path).update(data)
+      .catch(error => {
+        console.log(error);
+      });
+
+  }
+
 
 }
