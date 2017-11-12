@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
-import {MatIconRegistry} from '@angular/material';
-import { MatDialog } from '@angular/material';
+import {MatIconRegistry} from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
 
 import { AuthService } from '../../../core/services/auth/auth.service';
 
