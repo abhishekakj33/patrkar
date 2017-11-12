@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore ,AngularFirestoreDocument } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 //Pending:Have to remove * and only import neccesary module
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/auth';
 import { Observable } from 'rxjs/Observable';
 
 import { User, UserProfile } from '../../../core/models/user.model';
