@@ -1,0 +1,8 @@
+.a-poll-detail-card .mat-radio-group,.a-poll-detail-card .a-checkbox-group{
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .a-poll-detail-card .mat-radio-button, .a-poll-detail-card .a-checkbox-group .mat-checkbox{
+    margin:5px
+  }

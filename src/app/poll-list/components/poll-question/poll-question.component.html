@@ -1,0 +1,11 @@
+<div class="a-poll-detail-card">
+  <!-- {{poll.question}} -->
+  <div>
+  <mat-radio-group>
+    <mat-radio-button *ngFor="let opt of poll.options" [value]="opt" (change)="optionSelected(poll, q, opt)">
+      {{opt.option}}
+    </mat-radio-button>
+  </mat-radio-group>
+  
+  </div>
+</div>

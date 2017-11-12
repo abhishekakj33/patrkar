@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 /*Reset*/
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup,
@@ -9,13 +9,53 @@ tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, f
 header, hgroup, menu, nav, section, summary, time, mark, audio, video
  { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; font-family: Roboto, Arial, sans-serif;}
 
- /*Common css*/
+ /*Common*/
   .a-content {
-    min-height: calc(100vh - 104px);
+    min-height: calc(100vh - 96px);
   }
   .a-footer{
     background: #3f51b5;
     color: #fff;
     padding: 10px;
   }
-  /*Common css*/
+  .a-fill-remaining-space {
+    flex: 1 1 auto;
+  }
+  .a-full-width{
+    width: 100%
+  }
+  /*Common*/
+
+  /* Images */
+  .a-social-icons{
+    display: inline-block;
+  }
+  .a-social-icons li{
+    list-style: none;
+    cursor: pointer;
+  }
+  .a-google {
+    width: 191px;
+    height: 46px;
+    background-image: url('assets/img/social/btn_google_signin_light_pressed_web.png');
+    background-size: cover;
+  }
+  /* .a-fb {
+    background-image: url('assets/img/social/facebook.png');
+    background-size: cover;
+  }
+  .a-twitter {
+    background-image: url('assets/img/social/twitter.png');
+    background-size: cover;
+  } */
+
+  .a-img-circle {
+    object-fit: cover;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+  /* Images */
+
+
+  
