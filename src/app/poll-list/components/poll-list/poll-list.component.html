@@ -23,6 +23,7 @@
       (selectedOption)="optionSelected($event)"></a-poll-question>
       <a-poll-result [poll]="poll"
       (selectedOption)="optionSelected($event)"></a-poll-result>
+      <!-- <div *ngFor="let poll of polledByUser">{{poll | json}}</div> -->
   </mat-card-content>
   <!-- <mat-card-actions fxLayout="row">
     <a-fav [favParam]="{userId:poll.author,id:poll.id}" [favorited]="poll.favourite" [favCount]="poll.favCount" (fav)="favourited($event)"></a-fav>
@@ -31,4 +32,5 @@
     <a-share></a-share>
     <a-menu-task  [editParam]="{userId:poll.author,pollId:poll.id}" (edit)="editPoll($event)"></a-menu-task>
   </mat-card-actions> -->
+
 </mat-card>
